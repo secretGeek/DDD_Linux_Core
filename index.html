@@ -1,1 +1,670 @@
-Content goes here
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>Asp.net core on LINUX.</title>
+<meta name="viewport" content="height=device-height,width=device-width" />
+<link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/higgins.js"></script>
+<script type="text/javascript" src="js/commonmark.js"></script>
+<link rel="stylesheet" type="text/css" href="higgins.css">
+</head><body>
+<div id='noteDetail'></div><div id='notes' onclick='showNotes();'>n</div><div id='num'>#0</div>
+<div id='speaker'>...</div>
+
+<div class='container'> <!-- slides go inside this container. -->
+
+
+
+<div class='slide'>
+
+<img src='image/ezgif-119688299.gif' class='cover' alt='animated console' />
+
+</div>
+
+<div class='slide'>
+
+<img src='image/sponsors.png' class='cover' alt='sponsors' />
+
+</div>
+
+<div class='slide md J'>
+
+# Asp.net core on LINUX
+
+## it's the future
+## let's dive right in!
+</div>
+
+<div class='slide md L'>
+
+![Developers Developers Developers](image/DDD.jpg)
+
+</div>
+
+<div class='slide md L'>
+
+## Ballmer, 2001:
+
+> "Linux is a cancer"
+
+</div>
+
+<div class='slide md L'>
+
+## Ballmer, 2001:
+
+> "Linux is a cancer"
+
+
+## Ballmer, 2016:
+
+> "I may have called Linux a cancer but now I love it"
+
+<span class='notes md'>
+
+["I may have called Linux a cancer but now I love it"](http://www.zdnet.com/article/ballmer-i-may-have-called-linux-a-cancer-but-now-i-love-it)
+
+![ballmer](image/ballmer.png)
+
+</span>
+
+</div>
+
+
+
+<div class='slide md L'>
+
+## What changed?
+
+</div>
+
+<div class='slide md L'>
+
+# Azure
+## Desktop Sales &darr;
+## Cloud Services &uarr;
+
+</div>
+
+
+<div class='slide md L'>
+
+Before Azure:
+
+> Windows Server is the best thing for data centers!
+
+</div>
+
+
+<div class='slide md L'>
+
+After Azure:
+
+> Here's Windows Server Core... best thing for data centers!
+</div>
+
+
+<div class='slide md L'>
+
+More Azure:
+
+> Here's Windows Server Nano... best thing for data centers!
+
+</div>
+
+
+<div class='slide md L'>
+
+Today...
+
+> We offer Linux!
+
+</div>
+
+
+<div class='slide md L'>
+
+
+## join the dots
+
+# Microsoft is a Linux company
+
+## Inevitable conclusion
+
+</div>
+
+
+<div class='slide md J'>
+
+# MS Stuff and Linux
+
+- dotnet core
+- visual studio code
+- SQL Server 2016
+- Service Fabric
+- PowersHell 
+- Ubuntu on Windows 10
+- Linux Azure VMs
+- Silverlight for Lynx
+
+</div>
+
+<div class='slide md L'>
+
+# Why does it benefit you today?
+<span class='notes md'>
+
+* opens you up to a larger ecosystem
+* microservices with less friction
+* scaling without license problems
+* drastically cheaper hosting
+
+</span>
+</div>
+
+<div class='slide md L'>
+
+![before and after (secretGeek.net)](image/uptime_before_and_after_large.png)
+</div>
+
+
+<div class='slide md L'>
+
+# The old architecture
+
+![old architecture](image/Old_Architecture.png)
+
+
+</div>
+
+<div class='slide md L'>
+
+# The new architecture
+
+![new architecture](image/New_Architecture.png)
+
+</div>
+
+<div class='slide md L'>
+![pepe](image/red_string_wall.jpg)
+
+<span class='notes md'>
+
+**WOAH!** Lots of differences! An overwhelming number of changes. But think of all the things we've thrown away. IIS! No more IIS. Phew! No more application pools. No more terminal services. Let's take a closer look
+
+If it feels daunting -- if you feel that "I SUCK" feeling -- then that's great! It means you're learning! It's the mental equivalent of the gym saying 'no pain no gain.' And it's amazing how quick you'll get past those initial feelings. You run each of the commands in this tutorial 2 or 3 times on your own -- you'll start to feel veeeery comfortable with it. You can acclimatize to this very quickly. It's all just typing!
+
+There's going to be a *lot* of terminology thrown at you during this talk. It's all online at {TODO: some simple url} where it's described in a lot more detail, with links you can follow and everything -- so for now i suggest you just sit back, let it all wash over you, and you can check up on it all later if you're super keen.
+
+(image: pepe silvia scene from "it's always sunny in philadelphia")
+
+</span>
+</div>
+
+<div class='slide md J'>
+# The new architecture
+
+![new architecture](image/New_Architecture.png)
+
+<span class='notes md'>
+
+There's a finite number of boxes there... nginx, Kestrel, supervisor, SSH, fail2ban... we'll go through each of those, carefully, and then you'll be able to put Linux on your resume. Ok there's a few concepts we'll need to cover along the way.
+
+</span>
+</div>
+
+<div class='slide md'>
+
+<hr/>
+
+# Demonstration
+
+
+<span class='notes md'>
+
+ * See [script for demo](demo/scripts.md)
+ 
+ Demo as animated gifs...
+ 
+ * [create droplet](ScreenToGif_Files/CreateDroplet.gif)
+ * [configure droplet](ScreenToGif_Files/ConfigureDroplet.gif)
+ * [install .net core](ScreenToGif_Files/InstallDotNetCore.gif)
+ * [hello world](ScreenToGif_Files/HelloWorld.gif)
+ * [web app](ScreenToGif_Files/WebApp.gif)
+
+ Documentation:
+ 
+ * Configure droplet: [https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
+ 
+ * [An Introduction to Securing your Linux VPS (Digital Ocean)](https://www.digitalocean.com/community/tutorials/an-introduction-to-securing-your-linux-vps)
+ 
+ * [7 Security Measures to Protect Your Servers (Digital Ocean)](https://www.digitalocean.com/community/tutorials/7-security-measures-to-protect-your-servers)
+ 
+ * [Asp.net Core Publish to a Linux Production Environment (Microsoft)](https://docs.microsoft.com/en-us/aspnet/core/publishing/linuxproduction)
+
+ * [Hanselman: Publishing an ASP.NET Core website to a cheap Linux VM host](http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx)
+ 
+ 
+ 
+* get a VM at digitalocean, US$5 per month.
+...or scaleway 3 euro per month, or linode,
+or amazon (AWS free tier... 1 year free), or
+arubacloud.com (1 euro per month) or others...
+
+Go there, sign up, and get a machine in the cloud.
+
+</span>
+</div>
+
+<div class='slide md'>
+
+# Demonstration
+
+## configure droplet
+
+<span class='notes md'>
+
+setup the machine (this will take many steps)
+- apt-get, we'll use that early on
+- root/sudo
+   - create new user who is not root
+   - give new user sudo privileges
+   - test new user in separate SSH windows
+     - includes testing sudo
+   - stop root user from being usable
+   - stop password based logins from being allowed
+- configure fail2ban
+
+
+
+
+</span>
+</div>
+
+<div class='slide md J'>
+
+# Windows Admin in One Slide
+
+![linux admin in one slide](image/next.gif)
+
+</div>
+
+<div class='slide md J'>
+
+# Linux Admin in One Slide
+
+![linux admin in one slide](image/linuxadmin1.png)
+
+</div>
+
+<div class='slide md'>
+# Linux Admin in One Slide
+
+![linux admin in one slide](image/linuxadmin.png)
+
+</div>
+
+<div class='slide'>
+<img src='image/sandwich.png' alt='simple cat' />
+<span class='notes'>
+<p>This is how you achieve a least privilege yet powerful super user on linux: with sudo. It's basically simon says. you type sudo {command}, and then it asks you for your password. So you want a long but easy to type password -- recommend a passphrase!</p>
+</span>
+</div>
+
+<div class='slide'>
+
+<h1>Bash v cmd.exe:</h1>
+<h2>Similarities</h2>
+<table class='compare'>
+<thead>
+<tr>
+<th>windows</th><th>bash</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>cd ..</code></td><td><code>cd ..</code></td></tr>
+<tr><td><code>cd \</code></td><td><code>cd /</code></td></tr>
+<tr><td><code>dir</code></td><td><code>ls</code></td></tr>
+<tr><td><code>copy</code></td><td><code>cp</code></td></tr>
+<tr><td><code>del</code></td><td><code>rm</code></td></tr>
+<tr><td><code>rd</code></td><td><code>rmdir</code></td></tr>
+<tr><td><code>cls</code></td><td><code>clear</code></td></tr>
+<tr><td><code>type {file}</code></td><td><code>cat {file}</code></td></tr>
+<tr><td><code>| (pipe)</code></td><td><code>| (pipe)</code></td></tr>
+<tr><td><code>stdin, stdout, stderr</code></td><td><code>stdin, stdout, stderr</code></td></tr>
+
+</tbody>
+</table>
+<span class='notes'>
+<p></p>
+</span>
+</div>
+
+<div class='slide'>
+<h1>Bash v cmd.exe:</h1>
+<h2>Differences</h2>
+<pre>
+- case sensitive!
+- file extensions: not relevant.
+- "dot" prefix on a file: hides the file
+- no drive letters. "mount" a device into a location.
+- "~" means your home path. "cd" with no parameters takes you home.
+- everything is a file:
+ - streams
+    - stdin, stdout, stderr,
+ - devices... are all files.
+</pre>
+<span class='notes'>
+<p></p>
+</span>
+</div>
+
+<div class='slide'>
+<h1>Bash v cmd.exe:</h1>
+<h2>Other Common Things</h2>
+<pre>
+.profile
+grep
+tail
+top
+editing config files
+managing processes
+</pre>
+<span class='notes'>
+<p></p>
+</span>
+</div>
+
+
+
+
+
+
+
+<div class='slide md'>
+
+# Demonstration
+
+## install .net core
+
+[https://www.microsoft.com/net/core#ubuntu](https://www.microsoft.com/net/core#ubuntu)
+
+<span class='notes md'>
+
+
+
+
+* install .net core
+* instructions at asp.net [https://www.microsoft.com/net/core#ubuntu](https://www.microsoft.com/net/core#ubuntu)
+
+        sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+        sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+        sudo apt-get update
+
+        sudo apt-get install dotnet-dev-1.0.0-preview2-003131
+
+
+</span>
+</div>
+
+<div class='slide md'>
+
+# Demonstration
+
+## hello world
+
+<span class='notes md'>
+
+    mkdir testapp
+    cd testapp
+    dotnet new
+    dotnet restore
+    dotnet run
+
+</span>
+</div>
+
+<div class='slide md'>
+# Demonstration
+
+## hello web
+
+<span class='notes md'>
+
+build test web app...
+
+    dotnet new -t web
+
+
+But how to see it working?
+can't very well visit localhost...
+ * can curl / wget ...
+ * but how to SEE the website...
+
+Either:
+
+ * Get Kestrel to listen on all IP addresses: dotnet run --hosturl http://0.0.0.0:80
+   * but it explicitly says not to do that in the documentation:
+    Kestrel is designed to be run behind a proxy (for example IIS or Nginx)
+    and should not be deployed directly facing the Internet.
+    (http://docs.asp.net/en/latest/fundamentals/servers.html#choosing-a-server)
+ * Set up a reverse proxy between public internet and your app
+ 
+> A reverse proxy-server can allow you to offload work like serving static content, caching requests, compressing requests, and SSL termination from the HTTP server. The reverse proxy server may reside on a dedicated machine or may be deployed alongside an HTTP server. 
+>
+> [Publish to a Linux Production Environment](https://docs.microsoft.com/en-us/aspnet/core/publishing/linuxproduction)
+</span>
+</div>
+
+<div class='slide md'>
+
+# Kestrel 
+
+## Tech Empower Benchmarks
+
+</div>
+
+<div class='slide md'>
+
+# Kestrel 
+
+## Tech Empower Benchmarks
+
+> Thanks to Microsoft’s herculean performance tuning effort, ASP.NET—in the new cross-platform friendly form of ASP.NET Core—is now a top performer in our Plaintext test, making it among the fastest platforms at the fundamentals of web request routing. The degree of improvement is absolutely astonishing, going from 2,120 requests per second on Mono in Round 11 to 1,822,366 requests per second on ASP.NET Core in Round 13. That’s an approximately **85,900%** improvement
+
+[TechEmpower Blog - Round 13](https://www.techempower.com/blog/2016/11/16/framework-benchmarks-round-13/)
+
+</div>
+
+<div class='slide md'>
+# Demonstration
+
+## nginx
+
+<span class='notes md'>
+
+What is nginx? it's a webserver. A big proper battle hardened webserver.
+
+- install nginx
+- configure nginx to act as a "reverse proxy"
+- /etc/nginx/nginx.conf and /etc/nginx/sites-enabled/
+
+TEST:  can now see site from the internet...
+</span>
+</div>
+
+<div class='slide md'>
+# Demonstration
+
+## supervisor
+
+<span class='notes md'>
+
+- install supervisor
+
+it's like the service manager in windows. It's job is to keep things running.
+
+- configure supervisor
+
+On start up of the machine, it will start your webapp.
+
+If your web app falls over, supervisor will start it up again.
+
+    sudo service supervisor stop
+    sudo service supervisor start
+    sudo tail -f /var/log/supervisor/supervisord.log
+
+#and the application logs if you like
+
+    sudo tail -f /var/log/dotnettest.out.log
+
+TEST: app now runs all the time...
+
+</span>
+</div>
+
+<div class='slide md'>
+# Demonstration
+
+## back on windows
+
+<span class='notes md'>
+
+ * create app on your local windows machine
+ * Can run it from visual studio.
+ * Or can run it from the console:
+
+        dotnet run
+
+</span>
+</div>
+
+<div class='slide md'>
+# Demonstration
+
+## deploy from windows
+
+<span class='notes md'>
+
+ * create deployment version
+
+        dotnet publish
+
+ * upload it using sftp
+    * can use other techniques too:
+        * "scp" (secure copy)
+        * git push/pull
+        * docker container
+
+ * run it in the console, to see if it works.
+
+        dotnet `yoursite.dll`
+
+ * run it via supervisor...
+ * if it's already running via supervisor, then you need to restart the app...
+
+        ps x | grep dot
+        sudo kill 1234
+
+</span>
+</div>
+
+
+<div class='slide md'>
+
+# Revisit...
+
+![new architecture](image/New_Architecture.png)
+
+</div>
+
+<!--
+<div class='slide'>
+
+<h1>migrating to asp.net core</h1>
+<ul>
+    <li>DI out the wazoo</li>
+    <li>instead of global.asx.cs, or App_Start folder... go to Startup.cs</li>
+    <ul>
+        <li>HOME OF THE MAGIC</li>
+        <li>Startup (constructor) application settings happen here</li>
+        <li>ConfigureServices</li>
+        <ul>
+            <li>EVERYTHING is a "service"</li>
+            <li>basically magic.</li>
+            <li>caching, logging, session, email</li>
+            <li>authentication (which has been rewritten again)</li>
+        </ul>
+        <li>Configure -- routing happens in here</li>
+    </ul>
+    <li>in a view, can inject with
+    @inject SignInManager&lt;ApplicationUser&gt; SignInManager
+    </li>
+</ul>
+
+</div>
+-->
+
+
+<div class='slide'>
+<img src='image/certificate.png' alt='a dodgy looking certificate courtesy of CLEVER CERTIFICATES' />
+<span class='notes'>
+<p>If you take a photo of this slide and put it in your CV, you can ride the cash cow on the back of the gravy train until the golden goose lays a license to print money all the way to eldorado, etc.
+</p>
+</span>
+</div>
+
+
+
+<div class='slide'>
+<h2>References</h2>
+<ul>
+<li><a href='https://til.secretgeek.net/linux/01_summary.html'>TIL.secretGeek.net Linux section</a></li>
+<li><a href='https://docs.asp.net/en/latest/publishing/linuxproduction.html'>https://docs.asp.net/en/latest/publishing/linuxproduction.html</a></li>
+<li><a href='http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx'>Hanselman: Publishing an ASP.NET Core website to a cheap Linux VM host</a></li>
+</ul>
+</div>
+
+<!-- //spare slide with notes...
+<div class='slide'>
+<p></p>
+<span class='notes'>
+<p></p>
+</span>
+</div>
+
+// spare slide without notes...
+<div class='slide'>
+<p></p>
+</div>
+
+<blockquote><pre>
+</pre></blockquote>
+
+
+
+-->
+
+<div class='slide'>
+    <h1>Tod and Jakob</h1>
+    <h2>Workshop - An Introduction to .NET Core on Linux &amp; Docker</h2>
+    <img src="image/tod.jpg" alt="Tod" />
+    <img src="image/jakob.jpg" alt="Jakob" />
+    
+</div>
+
+<div class='slide'>
+
+<img src='image/feedback.png' class='cover' alt='feedback' />
+
+</div>
+
+<!-- final slide.. -->
+<div class='slide'>
+<img src='image/simple_cat.gif' alt='simple cat' />
+</div>
+
+</div>
+
+</body>
+</html>

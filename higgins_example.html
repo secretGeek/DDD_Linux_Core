@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>higgins presenter</title>
+<meta name="viewport" content="height=device-height,width=device-width" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/higgins.js"></script>
+<link rel="stylesheet" type="text/css" href="higgins.css">
+</head><body>
+<div id='noteDetail'></div><div id='notes' onclick='showNotes();'>n</div><div id='num'>#0</div>
+<!-- The higgins slide presenter, licensed MS-PL, by Leon Bambrick, http://secretGeek.net -->
+<!-- Get your own higgins from http://higgins.CodePlex.com -->
+<!-- Put your collection of slides here... -->
+
+<div class='slide'>
+<p>This is higgins. A simple slide viewer.</p>
+<p>Press F11 to go full screen</p>
+<img src='image/higgins_logo.png'>
+<p>Press space to go to the next slide.</p>
+
+</div>
+
+<div class='slide'>
+<p>Write your slides in plain Html.</p>
+<p>You can also use the arrow keys to move forward or backward.</p>
+<p>(Or click anywhere to go forward)</p>
+<p>Move forward again. &raquo;</p>
+</div>
+
+<div class='slide'>
+<p>Each slide is a <code>div</code> with a class of <code>slide</code>.</p>
+<p>They look like this:</p>
+<blockquote style='text-align:left'>
+&nbsp; &nbsp; &lt;div class='slide'&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;This is a simple slide viewer.&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;Press space to go to the next slide.&lt;/p&gt;<br />
+&nbsp; &nbsp; &lt;/div&gt;
+</blockquote> 
+</div>
+
+<div class='slide kapow'>
+ <p>Add css classes to your slides<br />
+ to change their appearance.</p>
+</div>
+
+<div class='slide'>
+ <p>You can include notes with any slide.<br />
+ See that little 'n' in the top right?<br />
+ click that to show the notes for a slide.</p>
+
+<span class='notes'>
+<p>Notes are shown in a smaller font as they are really for the benefit of the presenter not the audience.</p>
+<p>They can be a helpful cue for what to say on each slide.</p>
+<p>To include notes for a slide, just include an element (such as a span) with a class of notes. Notes are hidden by default.</p>
+<p>Click the 'n' again to hide the notes. (Or just move to the next slide.)</p></span>
+
+</div>
+
+<div class='slide'>
+<p>I built this tool for a talk at <a href='http://meetup.com'>Brisbane Alt.net</a>.</p>
+<p>I didn't have powerpoint on my netbook, and wanted to be able to write the slides while on the bus.</p>
+</div>
+
+</body>
+</html>
