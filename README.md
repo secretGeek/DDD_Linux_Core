@@ -39,8 +39,8 @@ Tools required for this talk are:
 4. Zoomit from sysinternals <https://technet.microsoft.com/en-us/sysinternals/zoomit.aspx> 
     - hotkey: `ctrl 1` to zoom
     - hotkey: `ctrl 2` to draw
-5. Higgins (included with this repo)
-6. A digital ocean account, which knows a public ssh youv'e generated previously
+5. [Higgins](https://github.com/secretGeek/higgins) slide player (included with this repo)
+6. A [digital ocean](https://digitalocean.com) account, which knows a public ssh you've generated previously
 
 
 ## Contributing...
