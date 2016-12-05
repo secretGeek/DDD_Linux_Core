@@ -13,18 +13,12 @@
 
 <div class='container'> <!-- slides go inside this container. -->
 
-
-
 <div class='slide'>
-
 <img src='image/ezgif-119688299.gif' class='cover' alt='animated console' />
-
 </div>
 
 <div class='slide'>
-
 <img src='image/sponsors.png' class='cover' alt='sponsors' />
-
 </div>
 
 <div class='slide md J'>
@@ -69,8 +63,6 @@
 </span>
 
 </div>
-
-
 
 <div class='slide md L'>
 
@@ -219,6 +211,7 @@ There's a finite number of boxes there... nginx, Kestrel, systemd, SSH ... we'll
 
 # Demonstration
 
+ ## See [script for demo](demo/scripts.md)
 
 <span class='notes md'>
 
@@ -244,8 +237,6 @@ There's a finite number of boxes there... nginx, Kestrel, systemd, SSH ... we'll
 
  * [Hanselman: Publishing an ASP.NET Core website to a cheap Linux VM host](http://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx)
  
- 
- 
 * get a VM at digitalocean, US$5 per month.
 ...or scaleway 3 euro per month, or linode,
 or amazon (AWS free tier... 1 year free), or
@@ -256,6 +247,7 @@ Go there, sign up, and get a machine in the cloud.
 </span>
 </div>
 
+<!--
 <div class='slide md'>
 
 # Demonstration
@@ -263,7 +255,6 @@ Go there, sign up, and get a machine in the cloud.
 ## configure droplet
 
 <span class='notes md'>
-
 setup the machine (this will take many steps)
 - apt-get, we'll use that early on
 - root/sudo
@@ -274,12 +265,9 @@ setup the machine (this will take many steps)
    - stop root user from being usable
    - stop password based logins from being allowed
 - configure fail2ban
-
-
-
-
 </span>
 </div>
+-->
 
 <div class='slide md J'>
 
@@ -297,7 +285,8 @@ setup the machine (this will take many steps)
 
 </div>
 
-<div class='slide md'>
+<div class='slide md J'>
+
 # Linux Admin in One Slide
 
 ![linux admin in one slide](image/linuxadmin.png)
@@ -305,10 +294,18 @@ setup the machine (this will take many steps)
 </div>
 
 <div class='slide'>
+<h1>How sudo works</h1>
 <img src='image/sandwich.png' alt='simple cat' />
+
 <span class='notes'>
 <p>This is how you achieve a least privilege yet powerful super user on linux: with sudo. It's basically simon says. you type sudo {command}, and then it asks you for your password. So you want a long but easy to type password -- recommend a passphrase!</p>
 </span>
+</div>
+
+<div class='slide md'>
+
+![how ssh works](image/how_ssh_works.png)
+
 </div>
 
 <div class='slide'>
@@ -375,11 +372,7 @@ managing processes
 </span>
 </div>
 
-
-
-
-
-
+<!--
 
 <div class='slide md'>
 
@@ -390,8 +383,6 @@ managing processes
 [https://www.microsoft.com/net/core#ubuntu](https://www.microsoft.com/net/core#ubuntu)
 
 <span class='notes md'>
-
-
 
 
 * install .net core
@@ -456,6 +447,8 @@ Either:
 </span>
 </div>
 
+-->
+
 <div class='slide md'>
 
 # Kestrel 
@@ -475,6 +468,8 @@ Either:
 [TechEmpower Blog - Round 13](https://www.techempower.com/blog/2016/11/16/framework-benchmarks-round-13/)
 
 </div>
+
+<!-- 
 
 <div class='slide md'>
 # Demonstration
@@ -569,6 +564,7 @@ TEST: app now runs all the time...
 </span>
 </div>
 
+-->
 
 <div class='slide md'>
 
